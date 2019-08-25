@@ -8,5 +8,5 @@ Route::get('/about', 'StaticPagesController@about')->name('action');
 
 Route::get('signup', 'UsersController@create')->name('signup');
 
-//Route::resource('users','UsersController');
-Route::get('users/{user}', 'UsersController@show')->name('users.show');
+Route::resource('users','UsersController');
+//Route::get('users/{user}', 'UsersController@show')->name('users.show');

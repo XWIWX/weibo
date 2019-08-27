@@ -10,13 +10,19 @@ class UsersController extends Controller
     public function __construct()
     {
         $this->middleware('auth',[
-            'except' => ['create', 'store']
+            'except' => ['show', 'create', 'store', 'index']
         ]);
         $this->middleware('guest', [
             'only' => ['create']
         ]);
     }
-
+    // 用户列表
+    public function index()
+    {
+        $users = User::query()->paginate(10);
+        return view('users.index', compact('users'));
+    }
+    // 用户注册
     public function create()
     {
         return view('users.create');
@@ -24,10 +30,10 @@ class UsersController extends Controller
 
     public function show(User $user)
     {
-        $this->authorize('update', $user);
+
         return view('users.show', compact('user'));
     }
-
+    // 用户注册
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -46,12 +52,14 @@ class UsersController extends Controller
         return redirect()->route('users.show', [$user]);
     }
 
+    // 个人中心
     public function edit(User $user)
     {
         $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
+    // 用户更新
     public function update(User $user, Request $request)
     {
         $this->authorize('update', $user);

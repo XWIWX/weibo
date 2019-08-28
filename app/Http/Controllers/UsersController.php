@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use function Symfony\Component\VarDumper\Tests\Fixtures\bar;
 
 class UsersController extends Controller
 {
@@ -76,5 +77,14 @@ class UsersController extends Controller
         $user->update($date);
         session()->flash('success', '个人资料更新成功！');
         return redirect()->route('users.show', $user);
+    }
+
+    // 删除用户
+    public function destroy(User $user)
+    {
+        $this->authorize('destroy', $user);
+        $user->delete();
+        session()->flash('success', '成功删除用户！');
+        return back();
     }
 }

@@ -11,7 +11,7 @@ class UserPolicy
 
     /**
      * Create a new policy instance.
-     *
+     * 创建一个新的策略实例。
      * @return void
      */
     public function __construct()

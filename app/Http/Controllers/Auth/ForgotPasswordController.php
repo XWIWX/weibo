@@ -22,7 +22,7 @@ class ForgotPasswordController extends Controller
 
     /**
      * Create a new controller instance.
-     *
+     * 创建一个新的控制器实例。
      * @return void
      */
     public function __construct()

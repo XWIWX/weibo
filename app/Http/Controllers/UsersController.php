@@ -63,7 +63,7 @@ class UsersController extends Controller
     // 用户更新
     public function update(User $user, Request $request)
     {
-        $this->authorize('update', $user);
+        $this->authorize('update', $user);//为当前用户授权给定的操作。
         $this->validate($request, [
             'name' => 'required|max:50',
             'password' => 'nullable|confirmed|min:6'
@@ -82,6 +82,7 @@ class UsersController extends Controller
     // 删除用户
     public function destroy(User $user)
     {
+        $this->authorize('destroy', $user);
         $this->authorize('destroy', $user);
         $user->delete();
         session()->flash('success', '成功删除用户！');

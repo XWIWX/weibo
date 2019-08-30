@@ -22,14 +22,14 @@ class LoginController extends Controller
 
     /**
      * Where to redirect users after login.
-     *
+     * 登录后在何处重定向用户。
      * @var string
      */
     protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
-     *
+     * 创建一个新的控制器实例。
      * @return void
      */
     public function __construct()

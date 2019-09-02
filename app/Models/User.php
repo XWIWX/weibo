@@ -57,4 +57,9 @@ class User extends Authenticatable
             $user->activation_token = Str::random(10); //生成一个更真实的“随机”字母数字字符串。
         });
     }
+
+    public function statuses()
+    {
+        return $this->belongsTo(Status::class);
+    }
 }
